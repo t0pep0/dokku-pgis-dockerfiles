@@ -13,11 +13,12 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get clean
 RUN wget http://download.osgeo.org/postgis/source/postgis-2.1.0.tar.gz
 RUN tar xvf postgis-2.1.0.tar.gz
-RUN cd postgis-2.1.0
-RUN ./configure --with-pgconfig=/usr/bin/pg_config
-RUN make
-RUN make comments
-RUN make install
+RUN cd postgis-2.1.0; ./configure --with-pgconfig=/usr/bin/pg_config
+RUN cd postgis-2.1.0; make
+RUN cd postgis-2.1.0; make comments
+RUN cd postgis-2.1.0; make install
+RUN rm postgis-2.1.0.tar.gz
+RUN rm -r postgis-2.1.0
 
 
 # allow autostart again
