@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+export LC_ALL="C.UTF-8"
 if [[ $1 && $2 ]]; then
   # $1 = DB_PASSWORD
   # $2 = PORT  

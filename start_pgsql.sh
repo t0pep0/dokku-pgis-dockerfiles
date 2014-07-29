@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export LC_ALL="C.UTF-8"
 if [[ ! -f /opt/postgresql/initialized ]]; then
     mkdir -p /opt/postgresql
     cp -a /var/lib/postgresql/* /opt/postgresql/

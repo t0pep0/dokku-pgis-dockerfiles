@@ -4,11 +4,14 @@ FROM	ubuntu:trusty
 MAINTAINER	fermuch "fermuch@gmail.com"
 # Based on kload's (kload@kload.fr)
 
+#Set utf-8
+RUN export LC_ALL="C.UTF-8"
+
 # prevent apt from starting postgres right after the installation
 RUN	echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/policy-rc.d
 
 RUN apt-get update
-RUN	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y -q postgresql-9.3 postgresql-contrib-9.3 wget libpq-dev postgresql-server-dev-9.3 libxml2-dev libgdal-dev gdal-bin libproj-dev build-essential
+RUN	LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y -q postgresql-9.3 postgresql-contrib-9.3 wget libpq-dev postgresql-server-dev-9.3 libxml2-dev libgdal-dev gdal-bin libproj-dev build-essential
 RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get clean
 RUN wget http://download.osgeo.org/postgis/source/postgis-2.1.0.tar.gz
