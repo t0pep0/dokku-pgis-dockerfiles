@@ -11,18 +11,17 @@ RUN export LC_ALL="C.UTF-8"
 RUN	echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/policy-rc.d
 
 RUN apt-get update
-RUN	LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y -q postgresql-9.3 postgresql-contrib-9.3 wget libpq-dev postgresql-server-dev-9.3 libxml2-dev libgdal-dev gdal-bin libproj-dev build-essential
+RUN	LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y -q postgresql-9.3 postgresql-contrib-9.3 wget libpq-dev postgresql-server-dev-9.3 libxml2-dev libgdal-dev gdal-bin libproj-dev build-essential ostgresql-9.3-postgis
 RUN rm -rf /var/lib/apt/lists/*
 RUN apt-get clean
-RUN wget http://download.osgeo.org/postgis/source/postgis-2.1.0.tar.gz
-RUN tar xvf postgis-2.1.0.tar.gz
-RUN cd postgis-2.1.0; ./configure --with-pgconfig=/usr/bin/pg_config
-RUN cd postgis-2.1.0; make
-RUN cd postgis-2.1.0; make comments
-RUN cd postgis-2.1.0; make install
-RUN rm postgis-2.1.0.tar.gz
-RUN rm -r postgis-2.1.0
-
+#RUN wget http://download.osgeo.org/postgis/source/postgis-2.1.0.tar.gz
+#RUN tar xvf postgis-2.1.0.tar.gz
+#RUN cd postgis-2.1.0; ./configure --with-pgconfig=/usr/bin/pg_config
+#RUN cd postgis-2.1.0; make
+#RUN cd postgis-2.1.0; make comments
+#RUN cd postgis-2.1.0; make install
+#RUN rm postgis-2.1.0.tar.gz
+#RUN rm -r postgis-2.1.0
 
 # allow autostart again
 RUN	rm /usr/sbin/policy-rc.d
